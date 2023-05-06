@@ -4,7 +4,7 @@ import { DarkModeContext } from '../Context/DarkModeContext';
 
 export default function Button({ children, onClick, selected }) {
 
-  const { darkMode, toggleDarkMode } = useContext(DarkModeContext);
+  const { darkMode } = useContext(DarkModeContext);
 
   return (
     <HeaderButton darkMode = {darkMode} selected={selected} onClick={onClick}>

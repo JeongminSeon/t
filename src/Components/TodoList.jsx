@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Content from './Content';
 import Header from './Header';
 import Input from './Input';
