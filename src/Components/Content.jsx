@@ -29,50 +29,53 @@ export default function Content({ todo, setTodo, activeIndex }) {
 
 
   return (
-    <Container darkMode={darkMode} style={{minHeight : '275px'}}>
+    <Container darkMode={darkMode} style={{ minHeight: "275px" }}>
       {todo.map((item) => {
-        // 여기서 return 문이 누락되어 있습니다.
-        if (activeIndex === 0 ){
+        if (activeIndex === 0) {
           return (
             <Wrapper key={item.id}>
               <CheckBox
                 type="checkbox"
-                onChange={ () => {handleAchieve(item); }}
+                onChange={() => {
+                  handleAchieve(item);
+                }}
               />
               {item.achieve ? (
                 <span>{item.todoName}</span>
               ) : (
                 <span style={{ textDecoration: "line-through" }}>{item.todoName}</span>
               )}
-              <DeleteButton onClick = {() => handleDelete(item)}>
+              <DeleteButton onClick={() => handleDelete(item)}>
                 <AiFillDelete />
               </DeleteButton>
             </Wrapper>
           );
-        }
-        else if (activeIndex === 1 && item.achieve === true) {
+        } else if (activeIndex === 1 && item.achieve === true) {
           return (
             <Wrapper key={item.id}>
               <CheckBox
                 type="checkbox"
-                onChange={ () => {handleAchieve(item); }}
+                onChange={() => {
+                  handleAchieve(item);
+                }}
               />
               <span>{item.todoName}</span>
-              <DeleteButton onClick = {() => handleDelete(item)}>
+              <DeleteButton onClick={() => handleDelete(item)}>
                 <AiFillDelete />
               </DeleteButton>
             </Wrapper>
           );
-        }
-        else if(activeIndex === 2 && item.achieve === false) {
+        } else if (activeIndex === 2 && item.achieve === false) {
           return (
             <Wrapper key={item.id}>
               <CheckBox
                 type="checkbox"
-                onChange={ () => {handleAchieve(item); }}
+                onChange={() => {
+                  handleAchieve(item);
+                }}
               />
               <span style={{ textDecoration: "line-through" }}>{item.todoName}</span>
-              <DeleteButton onClick = {() => handleDelete(item)}>
+              <DeleteButton onClick={() => handleDelete(item)}>
                 <AiFillDelete />
               </DeleteButton>
             </Wrapper>
