@@ -1,10 +1,20 @@
 import React from 'react'
 import TodoList from './Components/TodoList';
 
+import {DarkModeProvider} from './Context/DarkModeContext';
+
 export default function App() {
   return (
-    <div>
-      <TodoList />
-    </div>
+    <DarkModeProvider value = "dark">
+      <div 
+        style={{ 
+          display : 'flex', 
+          justifyContent : 'center', 
+          alignContent : 'center'
+        }}
+      >
+        <TodoList />
+      </div>
+    </DarkModeProvider>
   )
 }
