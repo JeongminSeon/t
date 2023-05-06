@@ -16,7 +16,7 @@ export default function TodoList() {
     localStorage.setItem("todos", JSON.stringify(todo));
   }, [todo]);
 
-  return (다음주 
+  return (
     <Box>
       <Header setActiveIndex = {setActiveIndex} />
       <Content activeIndex = {activeIndex} todo = {todo} setTodo = {setTodo}/>
