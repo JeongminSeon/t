@@ -80,6 +80,8 @@ export default function Content({ todo, setTodo, activeIndex }) {
               </DeleteButton>
             </Wrapper>
           );
+        } else {
+          return null;
         }
       })}
     </Container>
