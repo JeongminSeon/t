@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import Content from './Content';
 import Header from './Header';
 import Input from './Input';
@@ -7,13 +7,20 @@ import styled from 'styled-components';
 export default function TodoList() {
 
   const [activeIndex, setActiveIndex] = useState(0);
-  const [Todo, setTodo] = useState([]);
+  const [todo, setTodo] = useState(() => {
+    const savedTodos = localStorage.getItem("todos");
+    return savedTodos ? JSON.parse(savedTodos) : [];
+  });
 
-  return (
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todo));
+  }, [todo]);
+
+  return (다음주 
     <Box>
-      <Header setActiveIndex = {setActiveIndex}/>
-      <Content activeIndex = {activeIndex} Todo = {Todo}/>
-      <Input setTodo = {setTodo}/>
+      <Header setActiveIndex = {setActiveIndex} />
+      <Content activeIndex = {activeIndex} todo = {todo} setTodo = {setTodo}/>
+      <Input todo = {todo} setTodo = {setTodo}/>
     </Box>
   )
 }
