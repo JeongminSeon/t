@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
 import styled from 'styled-components';
-import { DarkModeContext } from '../Context/DarkModeContext';
+import { DarkModeContext } from '../../Context/DarkModeContext';
 
 export default function Button({ children, onClick, selected }) {
 
