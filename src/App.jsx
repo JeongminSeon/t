@@ -1,9 +1,14 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import TodoList from './Components/TodoList/TodoList';
+import Header from './Components/Header/Header';
+import { useState } from 'react';
+// import {DarkModeProvider} from './Context/DarkModeContext';
 
-import {DarkModeProvider} from './Context/DarkModeContext';
-
+const filters = ['all', 'active', 'completed'];
 export default function App() {
+
+  const [filter, setFilter] = useState(filters[0])
+
   return (
     // <DarkModeProvider value = "dark">
     //   <div 
@@ -16,9 +21,9 @@ export default function App() {
     //     <TodoList />
     //   </div>
     // </DarkModeProvider>
-
-    <div>
-      <TodoList />
-    </div>
+    <>
+      <Header filters = {filters} filter={filter} onFilterChange={setFilter}/>
+      <TodoList filter = {filter}/>
+    </>
   )
 }

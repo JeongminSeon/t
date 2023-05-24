@@ -1,21 +1,39 @@
 import React from 'react'
 import AddTodo from '../AddTodo/AddTodo';
+import { useState } from 'react';
+import Todo from '../Todo/Todo';
+import styles from './TodoList.module.css'
 
-export default function TodoList() {
+export default function TodoList({filter}) {
   const [todos, setTodos] = useState([
     {id : '123', text : '장보기', status : 'active'},
     {id : '124', text : '공부하기', status : 'active'},
   ]);
   
   const handleAdd = (todo) => {
-    // 새로운 투두를 todo에 update해야함 
+    setTodos([...todos, todo]);
   }
+  const handleUpdate = (updated) => {
+    setTodos(todos.map((t) => (t.id === updated.id ? updated : t)));
+  }
+  const handleDelete = (deleted) => {
+    setTodos(todos.filter((t) => (t.id !== deleted.id)));
+  }
+
+  const filterd = getFilterdItems(todos, filter)
+
   return (
-    <section>
-      <ul>
+    <section className={styles.container}>
+      <ul className={styles.list}>
         {
-          todos.map((item) => (
-          <li key = {item.id}>{item.text}</li>
+          filterd.map((item) => (
+          // <li key = {item.id}>{item.text}</li>
+          <Todo
+            key = {item.id} 
+            todo = {item} o
+            onUpdate = {handleUpdate} 
+            onDelete={handleDelete}
+          />
           ))
         }
       </ul>
@@ -23,3 +41,12 @@ export default function TodoList() {
     </section>
   )
 }
+
+function getFilterdItems(todos, filter){
+
+  if(filter === 'all') {
+    return todos;
+  }
+  return todos.filter(todo => todo.status === filter)
+
+}      
