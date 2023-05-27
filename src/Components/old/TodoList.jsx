@@ -6,6 +6,8 @@ import styled from 'styled-components';
 
 export default function TodoList() {
 
+  const [todos, setTodos] = useState(loaclStorage.getItem);
+
   const [activeIndex, setActiveIndex] = useState(0);
   const [todo, setTodo] = useState(() => {
     const savedTodos = localStorage.getItem("todos");
